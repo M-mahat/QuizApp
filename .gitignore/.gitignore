@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingLeft="8dp"
+    android:paddingBottom="8dp"
+    android:layout_gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer the following questions"
+        android:textColor="#0000ff"
+        android:paddingBottom="8dp"
+        android:textAppearance="?android:textAppearanceMedium"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="1.XML stands for?"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer"
+            android:hint="write your answer"
+            android:inputType="textMultiLine"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="2. Andela was found in?"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/radio-2014"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2014" />
+
+        <RadioButton
+            android:id="@+id/radio_2017"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017" />
+        <RadioButton
+            android:id="@+id/radio_2010"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2010" />
+
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/Text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="3. Java is the official language of Android dev?"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/radio_true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="True" />
+        <RadioButton
+            android:id="@+id/radio_false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="False" />
+        </RadioGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:text="4. Which of the followings are the Core values of Andela?"/>
+
+        <CheckBox
+            android:id="@+id/box_ONE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passion" />
+
+        <CheckBox
+            android:id="@+id/box_TWO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Integrity" />
+        <CheckBox
+            android:id="@+id/box_THREE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excellence" />
+        <CheckBox
+            android:id="@+id/box_FOUR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business" />
+
+
+
+
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/submitBtn"
+        android:text="SUBMIT"
+        android:background="#3F51B5"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.example.mahat.quizapp;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editText;
+    private Button button;
+    private RadioButton radio2014, radio2017, radio2010;
+    private RadioButton radiotrue, radiofalse;
+    private CheckBox ONE, TWO, THREE, FOUR;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final String ans = "extensible markup language";
+
+        editText = findViewById(R.id.answer);
+        radio2010 = findViewById(R.id.radio_2010);
+        radio2017 = findViewById(R.id.radio_2017);
+        radio2014 = findViewById(R.id.radio_2014);
+        radiotrue = findViewById(R.id.radio_true);
+        radiofalse = findViewById(R.id.radio_false);
+        ONE =  findViewById(R.id.box_ONE);
+        TWO =  findViewById(R.id.box_TWO);
+        THREE =  findViewById(R.id.box_THREE);
+        FOUR =  findViewById(R.id.box_FOUR);
+
+
+        button = findViewById(R.id.submitBtn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (radio2014.isChecked()) {
+                    Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                } else if (radio2010.isChecked() || radio2017.isChecked()) {
+                    Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                }
+                if (radiotrue.isChecked()) {
+                    Toast.makeText(MainActivity.this, "correct", Toast.LENGTH_LONG).show();
+                }else if (radiofalse.isChecked()){
+                    Toast.makeText(MainActivity.this, "incorrect", Toast.LENGTH_SHORT).show();
+
+                    if (ONE.isChecked()){
+                        Toast.makeText(MainActivity.this, "correct", Toast.LENGTH_SHORT).show();
+
+                    }else if (FOUR.isChecked()){
+                        Toast.makeText(MainActivity.this, "incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                if (editText.getText().toString().trim().toLowerCase().replaceAll("//s", "").equals(ans)){
+                    Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_LONG).show();
+                } else{
+                    Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+}
